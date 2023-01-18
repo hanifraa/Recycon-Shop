@@ -5,7 +5,7 @@
 
     <div class="row p-3">
         <h4 class="mt-3" style="font-weight: bold">Manage Item</h2>
-        
+
         @include('components.alert')
 
         @if ($count_product == false)
@@ -14,13 +14,13 @@
                 <div class="card">
                     <div class="card-body">
                     <p class="text-center mb-0">The product is empty</p>
-                    <p class="text-center"><a href="{{ route('add_item') }}">Add Item Product</a></p>    
+                    <p class="text-center"><a href="{{ route('add_item') }}">Add Item Product</a></p>
                     <img src="{{ asset('img/ils2.svg') }}" width="100%" alt="">
                     </div>
                 </div>
             </div>
         </div>
-            
+
         @else
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-info">
@@ -39,10 +39,10 @@
 
                 <tbody>
                     @php
-                        $no = 1;    
+                        $no = 1;
                     @endphp
 
-                    @foreach ($products as $item)    
+                    @foreach ($products as $item)
                         <tr style="white-space: nowrap;">
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->item_id }}</td>
@@ -64,13 +64,13 @@
         </div>
         @endif
     </div>
-    
+
     @foreach ($products as $item)
     <div class="modal fade" id="{{ 'delete'.$item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{{ 'delete'.$item->id.'Label' }}" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-            <h1 class="modal-title fs-5 text-danger" id="{{ 'delete'.$item->id.'Label' }}">Perhatian</h1>
+            <h1 class="modal-title fs-5 text-danger" id="{{ 'delete'.$item->id.'Label' }}">Warning</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -79,7 +79,7 @@
             <div class="modal-footer">
                 <form action="{{ url('/delete_item_handle/'.$item->id) }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn btn-danger">Hapus</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>
         </div>
